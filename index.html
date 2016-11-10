@@ -67,7 +67,63 @@
         <p><a class="btn btn-default" href="#" role="button">Learn more &raquo;</a></p>
       </div>
     </div>
+	
+	<script type="text/javascript"><!--
+	function ChangeTab(tabname) {
+   	// 全部消す
+   		document.getElementById('tab1').style.display = 'none';
+   		document.getElementById('tab2').style.display = 'none';
+   	// 指定箇所のみ表示
+   		document.getElementById(tabname).style.display = 'block';
+}
+// --></script>
+	
+	<div class="tabbox">
+   <p class="tabs">
+      <a href="#tab1" class="tab1" onclick="ChangeTab('tab1'); return false;">>イベントを探す</a>
+      <a href="#tab2" class="tab2" onclick="ChangeTab('tab2'); return false;">>企業を探す</a>
+   </p>
+   <div id="tab1" class="tab">
+      <p>イベントを探す</p>
+   </div>
+   <div id="tab2" class="tab">
+      <p>企業を探す</p>
+   </div>
+   <style type="text/css"><!--
+	/* ▼(A)表示領域全体 */
+	div.tabbox { margin: 0px; padding: 0px; width: 400px; }
 
+	/* ▼(B)タブ部分 */
+	p.tabs { margin: 0px; padding: 0px; }
+	p.tabs a {
+   		/* ▼(B-2)リンクをタブのように見せる */
+   		display: block; width: 5em; float: left;
+   		margin: 0px 1px 0px 0px; padding: 3px;
+   		text-align: center;
+   		border-radius: 12px 12px 0px 0px; /* 角を丸くする */
+	}
+	/* ▼(B-3)各タブの配色 */
+	p.tabs a.tab1 { background-color: #FFFFFF; color: #515151;}
+	p.tabs a.tab2 { background-color: #FFFFFF; color: #515151;}
+	p.tabs a:hover { color: #00B4FF; }
+
+	/* ▼(C)タブ中身のボックス */
+	div.tab {
+   	/* ▼(C-2)ボックス共通の装飾 */
+   		height: 150px; overflow: auto; clear: left;
+	}
+	/* ▼(C-3)各ボックスの配色 */
+	div#tab1 { border: 2px solid #FFFFFF; background-color: #FFFFFF; }
+	div#tab2 { border: 2px solid #FFFFFF; background-color: #FFFFFF; }
+	div.tab p { margin: 0.5em; }
+	--></style>
+	</div>
+	
+	<script type="text/javascript"><!--
+   // デフォルトのタブを選択
+   ChangeTab('tab1');
+   --></script>
+	
     <div class="container">
     	<form action="" method="get" class="">
 			<input type="text" class="" size="100" name="query" value=""  placeholder="Search"/>
