@@ -22,8 +22,9 @@
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
     </head>
-    <body>
+    <body onload="init();">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -42,35 +43,24 @@
           	</a>
           </p>
         </div>
-        <!-- 学生と企業を分けるJavascript-->
-        <script type="text/javascript">
-        function link(){
-          var UserID = document.getElementById("UserID").value;
-          var Password = document.getElementById("Password").value;
-          if(UserID == 'gakusei' && Password == '1234'){
-            document.location='mypage.html'; //学生用のページ
-          } else if (UserID == 'kigyo' && Password == '1234') {
-            document.location='404.html'; //企業用のページ．仮として404.htmlに設定している
-          } else{
-            $('#navbar-form').append('<p><font color="ff0000">IDまたはパスワードが間違っています</font></p>');
-          }
-          //console.log(UserID);
-          //console.log(Password);
-        }
-        </script>
-
         <div id="navbar" class="navbar-collapse collapse">
           <form id="navbar-form" class="navbar-form navbar-right" role="form">
+            <p id="student">ようこそ，gakuseiさん</p>
+            <p id="company">ようこそ，kigyoさん</p>
             <div class="form-group">
-              <input type="text" id="UserID" placeholder="UserID" class="form-control">
+              <input type="text" id="user_id" placeholder="UserID" class="form-control">
             </div>
             <div class="form-group">
-              <input type="password" id="Password" placeholder="Password" class="form-control">
+              <input type="password" id="password" placeholder="Password" class="form-control">
             </div>
-            <button type="button" class="btn btn-default" onclick="link()">Sign in</button>
-            <p>
+            <button id="signin" type="button" class="btn btn-default" onclick="judge();">Sign in</button>
+            <p id="signup">
             	<a href="signup.html">アカウントを持っていませんか？</a>
             </p>
+            <p id="mypage">
+              <a href="mypage.html">マイページ</a>
+            </p>
+            <p id="false-parameter"><font color="ff0000">IDまたはパスワードが間違っています</font></p>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
@@ -236,42 +226,37 @@
 			</div>
 			<div style="float:left;width: 23.958333%;position: absolute;top: 0;right: 0;bottom: 40px;min-height: 510px;">
 				<div class="row">
-					<div class="col-md-12">
-              			<!--<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>-->
+					<div id="eventlist" class="col-md-12">
+              			<!--<p>Donec id elit
+                    non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>-->
               			<p><a style="width: 200 height: 20" href="">イベントリスト</a></p>
 					</div>
-					<hr>
-					<hr>
-					<div class="col-md-12">
+          <hr>
+          <hr>
+					<div id="manual" class="col-md-12">
               			<!--<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>-->
               			<p><a style="width: 200 height: 20" href="">使い方</a></p>
 					</div>
-					<hr>
-					<hr>
-					<div class="col-md-12">
+					<div id="rate_plan" class="col-md-12">
               			<!--<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>-->
               			<p><a style="width: 200 height: 20" href="">料金プラン</a></p>
 					</div>
-					<hr>
-					<hr>
-					<div class="col-md-12">
+					<div id="cooperation_companies" class="col-md-12">
               			<!--<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>-->
               			<p><a style="width: 200 height: 20" href="">連携企業</a></p>
 					</div>
-					<hr>
-					<hr>
-					<div class="col-md-12">
+					<div id="senior_voices" class="col-md-12">
               			<!--<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>-->
               			<p><a style="width: 200 height: 20" href="">先輩たちの声</a></p>
 					</div>
-					<hr>
-					<hr>
-					<div class="col-md-12">
+					<div id="job_hunting_infomation" class="col-md-12">
               			<!--<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>-->
               			<p><a style="width: 200 height: 20" href="">就職情報</a></p>
 					</div>
-					<hr>
-					<hr>
+          <div id="mypage2" class="col-md-12">
+                    <!--<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>-->
+                    <p><a style="width: 200 height: 20" href="mypage.html">マイページ</a></p>
+          </div>
 				</div>
 			</div>
 		</div>
@@ -297,7 +282,6 @@
         <script src="js/bootstrap.min.js"></script>
 
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <!--<script>-->
