@@ -42,15 +42,32 @@
           	</a>
           </p>
         </div>
+        <!-- 学生と企業を分けるJavascript-->
+        <script type="text/javascript">
+        function link(){
+          var UserID = document.getElementById("UserID").value;
+          var Password = document.getElementById("Password").value;
+          if(UserID == 'gakusei' && Password == '1234'){
+            document.location='mypage.html'; //学生用のページ
+          } else if (UserID == 'kigyo' && Password == '1234') {
+            document.location='404.html'; //企業用のページ．仮として404.htmlに設定している
+          } else{
+            $('#navbar-form').append('<p><font color="ff0000">IDまたはパスワードが間違っています</font></p>');
+          }
+          //console.log(UserID);
+          //console.log(Password);
+        }
+        </script>
+
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
+          <form id="navbar-form" class="navbar-form navbar-right" role="form">
             <div class="form-group">
-              <input type="text" placeholder="UserID" class="form-control">
+              <input type="text" id="UserID" placeholder="UserID" class="form-control">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
+              <input type="password" id="Password" placeholder="Password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-default">Sign in</button>
+            <button type="button" class="btn btn-default" onclick="link()">Sign in</button>
             <p>
             	<a href="signup.html">アカウントを持っていませんか？</a>
             </p>
@@ -67,7 +84,7 @@
         <p><a class="btn btn-default" href="#" role="button">Learn more &raquo;</a></p>
       </div>
     </div>
-	
+
 	<script type="text/javascript"><!--
 	function ChangeTab(tabname) {
    	// 全部消す
@@ -77,7 +94,7 @@
    		document.getElementById(tabname).style.display = 'block';
 }
 // --></script>
-	
+
 	<div class="tabbox">
    <p class="tabs">
       <a href="#tab1" class="tab1" onclick="ChangeTab('tab1'); return false;">>イベントを探す</a>
@@ -118,12 +135,12 @@
 	div.tab p { margin: 0.5em; }
 	--></style>
 	</div>
-	
+
 	<script type="text/javascript"><!--
    // デフォルトのタブを選択
    ChangeTab('tab1');
    --></script>
-	
+
     <div class="container">
     	<form action="" method="get" class="">
 			<input type="text" class="" size="100" name="query" value=""  placeholder="Search"/>
