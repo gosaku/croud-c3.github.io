@@ -69,25 +69,25 @@
     </div>
 	
 	<script type="text/javascript"><!--
-	function ChangeTab(tabname) {
+	function ChangeTab(tabname,tablabel) {
    	// 全部消す
    		document.getElementById('tab1').style.display = 'none';
    		document.getElementById('tab2').style.display = 'none';
    	// 指定箇所のみ表示
    		document.getElementById(tabname).style.display = 'block';
    		
-   		//document.getElementById('tab1').style.borderBottom = "solid 3px #00B4FF";
-   		//document.getElementById('tab2').style.borderBottom = "solid 3px #EEEEEE";
+   		document.getElementById('tablabel1').style.borderBottom = "solid 3px #EEEEEE";
+   		document.getElementById('tablabel2').style.borderBottom = "solid 3px #EEEEEE";
    		
-   		//document.getElementById(tabname).style.borderBottom = "solid 3px #00B4FF";
+   		document.getElementById(tablabel).style.borderBottom = "solid 3px #00B4FF";
    		
 }
 // --></script>
 	
 	<div class="tabbox">
    <p class="tabs">
-      <a href="#tab1" class="tab1" onclick="ChangeTab('tab1'); return false;">企業を探す</a>
-      <a href="#tab2" class="tab2" onclick="ChangeTab('tab2'); return false;">イベントを探す</a>
+      <a href="#tab1" id="tablabel1" class="tab1" onclick="ChangeTab('tab1','tablabel1'); return false;" style="font-size:20px">企業を探す</a>
+      <a href="#tab2" id="tablabel2" class="tab2" onclick="ChangeTab('tab2','tablabel2'); return false;" style="font-size:20px">イベントを探す</a>
    </p>
    <div id="tab1" class="tab">
       <div class="container">
@@ -130,16 +130,19 @@
    </div>
    <style type="text/css"><!--
 	/* ▼(A)表示領域全体 */
-	div.tabbox { margin: 0px; padding: 0px; width: 500px; }
+	div.tabbox { margin: 0px; padding: 0px; width: 580px; }
 
 	/* ▼(B)タブ部分 */
 	p.tabs { margin: 0px; padding: 0px; }
 	p.tabs a {
    		/* ▼(B-2)リンクをタブのように見せる */
-   		display: block; width: 8em; float: left;
+   		display: block; width: 14em; float: left;
    		margin: 0px 1px 0px 0px; padding: 3px;
    		text-align: center;
    		border-radius: 12px 12px 0px 0px; /* 角を丸くする */
+   		box-shadow:5px 5px 3px #EEEEEE;
+    	-moz-box-shadow:5px 5px 3px #EEEEEE;
+    	-webkit-box-shadow:5px 5px 3px #EEEEEE;
 	}
 	/* ▼(B-3)各タブの配色 */
 	p.tabs a.tab1 { background-color: #FFFFFF; color: #515151; border-bottom: solid 3px #00B4FF;}
@@ -150,6 +153,9 @@
 	div.tab {
    	/* ▼(C-2)ボックス共通の装飾 */
    		height: 150px; overflow: auto; clear: left;
+   		box-shadow:5px 5px 3px #EEEEEE;
+    	-moz-box-shadow:5px 5px 3px #EEEEEE;
+    	-webkit-box-shadow:5px 5px 3px #EEEEEE;
 	}
 	/* ▼(C-3)各ボックスの配色 */
 	div#tab1 { border: 2px solid #FFFFFF; background-color: #FFFFFF; }
@@ -160,7 +166,7 @@
 	
 	<script type="text/javascript"><!--
    // デフォルトのタブを選択
-   ChangeTab('tab1');
+   ChangeTab('tab1','tablabel1');
    --></script>
 	
     <div class="container">
