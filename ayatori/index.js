@@ -1,0 +1,23 @@
+var Page = function(){
+    
+    this.vincluLed = new VincluLed(100,100);
+    
+    //初期化
+    this.init = function(){
+       $("#btnStart").click( $.proxy(this.clickBtnStart,this) );
+        $("#btnStop").click( $.proxy(this.clickBtnStop,this) );
+    };
+    
+    //点灯 ボタン
+    this.clickBtnStart = function(){
+        this.vincluLed.on();
+    };    
+    this.clickBtnStop = function(){
+        this.vincluLed.off();  
+    }
+};
+
+var p = new Page();
+$(function(){
+    p.init();
+});
