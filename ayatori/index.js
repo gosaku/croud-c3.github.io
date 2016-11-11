@@ -3,7 +3,7 @@ var Page = function(){
    // this.vincluLed = new VincluLed(100,100);
    
     //激しく点滅させる
-    var vincluLed = new VincluLed(100, 10);
+    this.vincluLed = new VincluLed(100, 10);
     
     //初期化
     this.init = function(){
